@@ -1,25 +1,30 @@
-import React from "react";
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElement,
-  RouterProvider,
-} from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
+import React from 'react';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import ProfileSection from './_components/ProfileSection';
+import ChangeEmailSection from './_components/ChangeEmailSection';
+import PasswordSection from './_components/PasswordSection';
 
 const App = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElement(
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    )
+  return (
+    <Container>
+      <Typography variant="h4" gutterBottom>
+        Settings
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <ProfileSection />
+        </Grid>
+        <Grid item xs={12}>
+          <ChangeEmailSection />
+        </Grid>
+        <Grid item xs={12}>
+          <PasswordSection />
+        </Grid>
+      </Grid>
+    </Container>
   );
-
-  return <RouterProvider router={router} />;
 };
 
 export default App;
